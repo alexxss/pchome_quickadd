@@ -1,0 +1,18 @@
+{
+	"manifest_version": 2,
+	"name": "QuickAdd",
+	"version": "0.0.6",
+	"background": {
+		"scripts": ["js/background.js"],
+		"persistent": false
+	},
+	"page_action": {
+		"default_icon": "pchome.ico"
+	},
+	"permissions": [
+		"tabs",
+		"declarativeContent",
+		"activeTab",
+		"https://ecssl.pchome.com.tw/sys/cflow/fsindex/BigCar/BIGCAR/ItemList" 
+	]
+}
