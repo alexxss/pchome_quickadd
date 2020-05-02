@@ -7,7 +7,8 @@ function poll() {
 	var x = document.querySelectorAll("td.cart"); 
 	var cnt=0; 
 	if (x.length==0) { 
-	console.log("poll for td.cart");
+		/***TODO***/
+		/* check if this is due to td.cart not yet loaded or empty list */
 		setTimeout(poll,300); 
 	}
 	else { 
@@ -20,10 +21,11 @@ function poll() {
 		} ); 
 		// if all items unavailable, reload page
 		if (cnt==x.length) {
-			console.log("no item available, reload page!"); 
 			chrome.runtime.sendMessage({data:"reload"});
 			location.reload();
 		} else { // otherwise click checkout
+			/***TODO***/
+			/* add support for other checkout method */
 			document.querySelector("li.ATM").firstElementChild.click();	
 			poll_2();
 		}
@@ -33,9 +35,9 @@ poll();
 
 // poll for confirm button appearance
 function poll_2(){
-	console.log("poll for confirm button");
 	var x = document.getElementById("warning_btn_confirm"); 
 	if (x!=null) {
+		// tell background.js to toggle toggle (lol)
 		chrome.runtime.sendMessage({data:"checkout"});
 		x.click(); 
 	} else setTimeout(poll_2,300);
